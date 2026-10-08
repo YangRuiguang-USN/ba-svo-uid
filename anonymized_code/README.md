@@ -33,8 +33,8 @@ The scripts are organized by processing stage, in the order they are meant to be
 
 - **`build_model_data.py`** — merges the final annotated bǎ and SVO datasets (`ba_annotated_final.csv`, `svo_annotated_final.csv`, and, once available, their surprisal counterparts) into `model_data.csv` / `model_data_surprisal.csv`, harmonizing column names and computing derived predictors (log-lengths, givenness binary, etc.).
 - **`compute_surprisal_v2.py`** — computes character-level surprisal for both members of each minimal pair using `uer/gpt2-chinese-cluecorpussmall`, with the two preceding conversational turns as left context, and derives the UID metrics (Δvariance, Δamplitude, Δmax-step, Δmean).
-- **`run_model.R`** — fits the baseline mixed-effects logistic regression models (M1, M2) without the UID predictor.
-- **`run_model_surprisal.R`** — fits the full models (M1, M3) including the UID predictor, plus the robustness checks across the three UID operationalizations, VIF diagnostics, and pseudo-R².
+- **`run_model.R`** — fits the baseline mixed-effects logistic regression models without the UID predictor: M1 (control predictors only, without the interaction) and M2 (M1 plus the object length × VP length interaction). M2 in the code is the paper's M1.
+- **`run_model_surprisal.R`** — fits the full models including the UID predictor (Δvariance, Δamplitude, Δmax-step), plus VIF diagnostics and pseudo-R². Note on model labels: the models are numbered M1–M5 in the code; the paper's M1 (controls only) corresponds to M2 in the code, and the paper's M2 (M1 + Δvariance) corresponds to M3 in the code.
 
 ### 5. `05_figures/` — figures
 
@@ -43,7 +43,7 @@ The scripts are organized by processing stage, in the order they are meant to be
 ## Requirements
 
 - Python: `pandas`, `numpy`, `torch`, `transformers`, `hanlp`, `jieba`, `matplotlib`, `pygam`
-- R: `lme4`, `car`, `MuMIn`, `broom.mixed`, `ggplot2`, `dplyr`
+- R: `lme4`, `car`, `MuMIn`, `broom.mixed`
 
 ## Use of AI assistance
 
