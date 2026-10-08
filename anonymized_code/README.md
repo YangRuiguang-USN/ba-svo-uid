@@ -38,7 +38,6 @@ The scripts are organized by processing stage, in the order they are meant to be
 
 ### 5. `05_figures/` — figures
 
-- **`plot_fig_deltavariance_distribution_en.R`** — Δvariance density plot by construction.
 - **`plot_fig1_prob_deltavariance.py`** — GAM-smoothed plot of the proportion of bǎ sentences as a function of Δvariance.
 
 ## Requirements
